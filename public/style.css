@@ -1,0 +1,40 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+
+.subscribe-form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: aliceblue;
+  padding: 20px;
+}
+
+.subscribe-form div {
+  margin-bottom: 20px;
+}
+
+.subscribe-form label {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.subscribe-form input {
+  padding: 5px;
+  width: calc(100% - 12px);
+  display: block;  
+  height: 30px;
+  border: 1px solid black;
+}
+
+.subscribe-form button {
+  padding: 7px;
+  cursor: pointer;
+}
+
+.subscribe-form .error {
+  color: red;
+  font-size: 14px;
+}

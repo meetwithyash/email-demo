@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome!</title>
+
+  <link rel="stylesheet" href="./style.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+</head>
+<body>
+  <form class="subscribe-form" id="subscribe-form">
+    <h2>Welcome!</h2>
+    <div>
+      <label>Enter your email</label>
+      <input type="email" placeholder="example@gmail.com" id="email" required />
+    </div>
+    <div>
+      <span class="message" id="message"></span>
+    </div>
+    <div>
+      <button>Subscribe</button>
+    </div>
+  </form>
+  
+  <script>
+    const formElem = document.getElementById("subscribe-form");
+    const emailElem = document.getElementById("email");
+    const messageElem = document.getElementById("message");
+
+    emailElem.addEventListener("focus", () => {
+      messageElem.innerHTML = "";
+    })
+
+    formElem.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      emailElem.setAttribute("disabled", true);
+
+      axios
+        .post("/user/register", { email: emailElem.value })
+        .then(result => { 
+          messageElem.innerHTML = result.data.data; 
+          emailElem.value = "";
+          emailElem.removeAttribute("disabled"); 
+        });
+    })
+  </script>
+</body>
+</html>
